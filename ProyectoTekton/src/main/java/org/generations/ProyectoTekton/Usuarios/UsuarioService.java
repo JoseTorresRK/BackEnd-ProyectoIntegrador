@@ -17,6 +17,10 @@ public class UsuarioService {
                 1,5,"Herrero Experimentado",
                 "localhost:5050/img2.png","oscar_mtz_dlo@gmail.com",
                 2));
+        lista.add(new Usuarios(3,"Victor Martinez de la O",
+                0,4,"Empleador de la empresa Tektôn",
+                "localhost:5050/img3.png","victor_mtz_dlo@gmail.com",
+                3));
     }// Constructor
 
     public List<Usuarios> getUsuarios(){return lista;}//getUsuarios
