@@ -19,8 +19,8 @@ public class UbicacionService {
         this.ubicacionRepository = ubicacionRepository;
     }
     public List<Ubicacion> getUbicacion () {return ubicacionRepository.findAll();}
-    
-    public Ubicacion getUbicacionById(Long ubicacionId){
+
+    public Ubicacion getUbicacionById(int ubicacionId){
         return ubicacionRepository.findById (ubicacionId).orElseTrow(
                 () -> new IllegalStateException("Ubicacion does not exists" + ubicacionId)
         );

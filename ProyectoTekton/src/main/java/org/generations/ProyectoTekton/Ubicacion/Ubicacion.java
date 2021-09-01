@@ -1,14 +1,25 @@
 package org.generations.ProyectoTekton.Ubicacion;
 
+import javax.persistence.*;
 @Entity
-@Table(name="ubicacion")
+@Table(name="Ubicacion")
 public class Ubicacion {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name="id_ubicacion", unique = true, nullable = false)
     private int id_ubicacion;
+    @Column(name="estado", nullable = false)
     private String estado;
+    @Column(name="municipio", nullable = false)
     private String municipio;
+    @Column(name="calle", nullable = false)
     private String calle;
+    @Column(name="codigo_postal", nullable = false)
     private String codigo_postal;
+    @Column(name="num_ext", nullable = false)
     private String num_ext;
+    @Column(name="num_int", nullable = false)
     private String num_int;
 
     public Ubicacion(int id_ubicacion, String estado,
