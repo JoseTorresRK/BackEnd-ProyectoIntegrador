@@ -3,6 +3,9 @@ package org.generations.ProyectoTekton.Usuarios;
 // Plain Old Java Object -- POJO
 //Usuarios
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class Usuarios {
     private int id_usuarios;
     private String nombre;
@@ -12,7 +15,25 @@ public class Usuarios {
     private String img_perfil;
     private String email;
     private int idUbicacion;
+    private ArrayList<String> categorias;
+    private ArrayList<String> subcategorias;
 
+    public Usuarios(int id_usuarios, String nombre, int tipo, int estrellas,
+            String descripcion_usuario, String img_perfil, String email,
+             int idUbicacion, ArrayList<String> categorias, ArrayList<String> subcategorias) {
+        this.id_usuarios = id_usuarios;
+        this.nombre = nombre;
+        this.tipo = tipo;
+        this.estrellas = estrellas;
+        this.descripcion_usuario = descripcion_usuario;
+        this.img_perfil = img_perfil;
+        this.email = email;
+        this.idUbicacion = idUbicacion;
+        this.categorias = categorias;
+        this.subcategorias = subcategorias;
+    }
+
+    /*
     public Usuarios(int id_usuarios, String nombre, int tipo, int estrellas,
                     String descripcion_usuario, String img_perfil, String email,
                     int idUbicacion) {
@@ -25,6 +46,7 @@ public class Usuarios {
         this.email = email;
         this.idUbicacion = idUbicacion;
     }
+    */
 
     public int getId_usuarios() {
         return id_usuarios;
@@ -58,6 +80,13 @@ public class Usuarios {
         return idUbicacion;
     }
 
+    public ArrayList<String> getCategorias() {
+        return categorias;
+    }
+
+    public ArrayList<String> getSubcategorias() {
+        return subcategorias;
+    }
     //Setters
 
 
@@ -93,7 +122,54 @@ public class Usuarios {
         this.idUbicacion = idUbicacion;
     }
 
+    public void setCategorias(ArrayList<String> categorias) {
+        this.categorias = categorias;
+    }
+
+    public void setSubcategorias(ArrayList<String> subcategorias) {
+        this.subcategorias = subcategorias;
+    }
+    /*
     @Override
+    public String toString() {
+        return "Usuarios{" +
+                "id_usuarios=" + id_usuarios +
+                ", nombre='" + nombre + '\'' +
+                ", tipo=" + tipo +
+                ", estrellas=" + estrellas +
+                ", descripcion_usuario='" + descripcion_usuario + '\'' +
+                ", img_perfil='" + img_perfil + '\'' +
+                ", email='" + email + '\'' +
+                ", idUbicacion=" + idUbicacion +
+                ", categorias=" + categorias +
+                ", subcategorias=" + subcategorias +
+                '}';
+    }
+    public void setCategorias(Categoria[] categorias) {
+        this.categorias = categorias;
+    }
+
+    public void setSubcategorias(Subcategoria[] subcategorias) {
+        this.subcategorias = subcategorias;
+    }*/
+
+    @Override
+    public String toString() {
+        return "Usuarios{" +
+                "id_usuarios=" + id_usuarios +
+                ", nombre='" + nombre + '\'' +
+                ", tipo=" + tipo +
+                ", estrellas=" + estrellas +
+                ", descripcion_usuario='" + descripcion_usuario + '\'' +
+                ", img_perfil='" + img_perfil + '\'' +
+                ", email='" + email + '\'' +
+                ", idUbicacion=" + idUbicacion +
+                ", categorias=" + Arrays.toString(new ArrayList[]{categorias}) +
+                ", subcategorias=" + Arrays.toString(new ArrayList[]{subcategorias}) +
+                '}';
+    }
+    /*
+     @Override
     public String toString() {
         return "Usuarios{" +
              "id_usuarios;='" + id_usuarios + '\'' +
@@ -106,5 +182,5 @@ public class Usuarios {
                 ", idUbicacion='" + idUbicacion + '\'' +
                 '}';
     }//toString
-
+    */
 }// class Employee
