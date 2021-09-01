@@ -3,6 +3,7 @@ package org.generations.ProyectoTekton.Usuarios;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -47,8 +48,10 @@ public class UsuariosController {
                                @RequestParam(required=false) int estrellas,
                                @RequestParam(required=false) String descripcion_usuario,
                                @RequestParam(required=false) String img_perfil,
-                               @RequestParam(required=false) String email){
-        usuarioService.updateUsuarios(usuariosId,nombre,tipo,estrellas,descripcion_usuario,img_perfil,email);
+                               @RequestParam(required=false) String email,
+                               @RequestParam(required = false) ArrayList<String> categorias,
+                               @RequestParam(required = false) ArrayList<String> subcategorias){
+        usuarioService.updateUsuarios(usuariosId,nombre,tipo,estrellas,descripcion_usuario,img_perfil,email,categorias,subcategorias);
     }
 
 }//Usuarios Controller
