@@ -3,184 +3,144 @@ package org.generations.ProyectoTekton.Usuarios;
 // Plain Old Java Object -- POJO
 //Usuarios
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import javax.persistence.*;
 
-public class Usuarios {
-    private int id_usuarios;
-    private String nombre;
-    private int tipo;
-    private int estrellas;
-    private String descripcion_usuario;
-    private String img_perfil;
-    private String email;
-    private int idUbicacion;
-    private ArrayList<String> categorias;
-    private ArrayList<String> subcategorias;
+@Entity
+@Table(name="usuarios")
+    public class Usuarios { // Plan Old Java Object - POJO
+        @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        @Basic(optional = false)
+        @Column(name = "idusuarios", unique = true, nullable = false)
+        private Long idusuarios;
+        @Column(name = "tipo", nullable = false)
+        private int tipo;
+        @Column(name = "descripcionusuario", nullable = false)
+        private String descripcionusuario;
+        @Column(name = "imgperfil")
+        private String imgperfil;
+        @Column(name = "nombre", nullable = false)
+        private String nombre;
+        @Column(name = "estrellas", nullable = false)
+        private int estrellas;
+        @Column(name = "email", nullable = false)
+        private String email;
+        @Column(name = "telefono", nullable = false)
+        private String telefono;
+        @Column(name = "pwd", nullable = false)
+        private String pwd;
+        @Column(name = "idubicacion",nullable = false)
+        private Long idubicacion;
 
-    public Usuarios(int id_usuarios, String nombre, int tipo, int estrellas,
-            String descripcion_usuario, String img_perfil, String email,
-             int idUbicacion, ArrayList<String> categorias, ArrayList<String> subcategorias) {
-        this.id_usuarios = id_usuarios;
-        this.nombre = nombre;
-        this.tipo = tipo;
-        this.estrellas = estrellas;
-        this.descripcion_usuario = descripcion_usuario;
-        this.img_perfil = img_perfil;
-        this.email = email;
-        this.idUbicacion = idUbicacion;
-        this.categorias = categorias;
-        this.subcategorias = subcategorias;
-    }
+        public Usuarios(Long idusuarios, int tipo, String descripcionusuario, String nombre, int estrellas, String email, String telefono, String pwd, Long idubicacion, String imgperfil) {
+            this.idusuarios = idusuarios;
+            this.tipo = tipo;
+            this.descripcionusuario = descripcionusuario;
+            this.nombre = nombre;
+            this.estrellas = estrellas;
+            this.email = email;
+            this.telefono = telefono;
+            this.pwd = pwd;
+            this.idubicacion = idubicacion;
+            this.imgperfil=imgperfil;
+        }
 
-    /*
-    public Usuarios(int id_usuarios, String nombre, int tipo, int estrellas,
-                    String descripcion_usuario, String img_perfil, String email,
-                    int idUbicacion) {
-        this.id_usuarios = id_usuarios;
-        this.nombre = nombre;
-        this.tipo = tipo;
-        this.estrellas = estrellas;
-        this.descripcion_usuario = descripcion_usuario;
-        this.img_perfil = img_perfil;
-        this.email = email;
-        this.idUbicacion = idUbicacion;
-    }
-    */
+        public void setImg_perfil(String img_perfil) {
+            this.imgperfil = img_perfil;
+        }
 
-    public int getId_usuarios() {
-        return id_usuarios;
-    }
+        public String getImg_perfil() {
+            return imgperfil;
+        }
 
-    public String getNombre() {
-        return nombre;
-    }
+        public Usuarios() {
+        }//default constructor
 
-    public int getTipo() {
-        return tipo;
-    }
+        public void setId_usuarios(Long id_usuarios) {
+            this.idusuarios = idusuarios;
+        }
 
-    public int getEstrellas() {
-        return estrellas;
-    }
+        public void setTipo(int tipo) {
+            tipo = tipo;
+        }
 
-    public String getDescripcion_usuario() {
-        return descripcion_usuario;
-    }
+        public void setDescripcion_usuario(String descripcion_usuario) {
+            this.descripcionusuario = descripcion_usuario;
+        }
 
-    public String getImg_perfil() {
-        return img_perfil;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public int getIdUbicacion() {
-        return idUbicacion;
-    }
-
-    public ArrayList<String> getCategorias() {
-        return categorias;
-    }
-
-    public ArrayList<String> getSubcategorias() {
-        return subcategorias;
-    }
-    //Setters
-
-
-    public void setId_usuarios(int id_usuarios) {
-        this.id_usuarios = id_usuarios;
+    @Override
+    public String toString() {
+        return "Usuarios{" +
+                "idusuarios=" + idusuarios +
+                ", tipo=" + tipo +
+                ", descripcionusuario='" + descripcionusuario + '\'' +
+                ", imgperfil='" + imgperfil + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", estrellas=" + estrellas +
+                ", email='" + email + '\'' +
+                ", telefono='" + telefono + '\'' +
+                ", pwd='" + pwd + '\'' +
+                ", idubicacion=" + idubicacion +
+                '}';
     }
 
     public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+            this.nombre = nombre;
+        }
 
-    public void setTipo(int tipo) {
-        this.tipo = tipo;
-    }
+        public void setEstrellas(int estrellas) {
+            this.estrellas = estrellas;
+        }
 
-    public void setEstrellas(int estrellas) {
-        this.estrellas = estrellas;
-    }
+        public void setEmail(String email) {
+            this.email = email;
+        }
 
-    public void setDescripcion_usuario(String descripcion_usuario) {
-        this.descripcion_usuario = descripcion_usuario;
-    }
+        public void setTelefono(String telefono) {
+            this.telefono = telefono;
+        }
 
-    public void setImg_perfil(String img_perfil) {
-        this.img_perfil = img_perfil;
-    }
+        public void setContrasena(String contrasena) {
+            this.pwd = contrasena;
+        }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+        public void setId_ubicacion(Long id_ubicacion) {
+            this.idubicacion = id_ubicacion;
+        }
 
-    public void setIdUbicacion(int idUbicacion) {
-        this.idUbicacion = idUbicacion;
-    }
+        public Long getId_usuarios() {
+            return idusuarios;
+        }
 
-    public void setCategorias(ArrayList<String> categorias) {
-        this.categorias = categorias;
-    }
+        public int getTipo() {
+            return tipo;
+        }
 
-    public void setSubcategorias(ArrayList<String> subcategorias) {
-        this.subcategorias = subcategorias;
-    }
-    /*
-    @Override
-    public String toString() {
-        return "Usuarios{" +
-                "id_usuarios=" + id_usuarios +
-                ", nombre='" + nombre + '\'' +
-                ", tipo=" + tipo +
-                ", estrellas=" + estrellas +
-                ", descripcion_usuario='" + descripcion_usuario + '\'' +
-                ", img_perfil='" + img_perfil + '\'' +
-                ", email='" + email + '\'' +
-                ", idUbicacion=" + idUbicacion +
-                ", categorias=" + categorias +
-                ", subcategorias=" + subcategorias +
-                '}';
-    }
-    public void setCategorias(Categoria[] categorias) {
-        this.categorias = categorias;
-    }
+        public String getDescripcion_usuario() {
+            return descripcionusuario;
+        }
 
-    public void setSubcategorias(Subcategoria[] subcategorias) {
-        this.subcategorias = subcategorias;
-    }*/
+        public String getNombre() {
+            return nombre;
+        }
 
-    @Override
-    public String toString() {
-        return "Usuarios{" +
-                "id_usuarios=" + id_usuarios +
-                ", nombre='" + nombre + '\'' +
-                ", tipo=" + tipo +
-                ", estrellas=" + estrellas +
-                ", descripcion_usuario='" + descripcion_usuario + '\'' +
-                ", img_perfil='" + img_perfil + '\'' +
-                ", email='" + email + '\'' +
-                ", idUbicacion=" + idUbicacion +
-                ", categorias=" + Arrays.toString(new ArrayList[]{categorias}) +
-                ", subcategorias=" + Arrays.toString(new ArrayList[]{subcategorias}) +
-                '}';
-    }
-    /*
-     @Override
-    public String toString() {
-        return "Usuarios{" +
-             "id_usuarios;='" + id_usuarios + '\'' +
-                ", nombre='" + nombre + '\'' +
-                ", tipo='" + tipo + '\'' +
-                ", estrellas=" + estrellas +
-                ", descripcion_usuario='" + descripcion_usuario + '\'' +
-                ", img_perfil='" + img_perfil + '\'' +
-                ", email=" + email +
-                ", idUbicacion='" + idUbicacion + '\'' +
-                '}';
-    }//toString
-    */
+        public int getEstrellas() {
+            return estrellas;
+        }
+
+        public String getEmail() {
+            return email;
+        }
+
+        public String getTelefono() {
+            return telefono;
+        }
+
+        public String getContrasena() {
+            return pwd;
+        }
+
+        public Long getId_ubicacion() {
+            return idubicacion;
+        }
 }// class Employee
