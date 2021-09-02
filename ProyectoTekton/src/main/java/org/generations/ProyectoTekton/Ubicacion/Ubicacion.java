@@ -34,8 +34,6 @@ public class Ubicacion {
         this.num_int = num_int;
     }// constructor
 
-    public Ubicacion() {
-    }
     //Getter and Setter
 
     public Long getId_ubicacion() {
