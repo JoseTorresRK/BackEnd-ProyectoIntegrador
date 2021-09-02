@@ -12,50 +12,36 @@ import java.util.Optional;
 public class UbicacionService {
     public final ArrayList<Ubicacion> lista = new ArrayList<Ubicacion>();
     private final UbicacionRepository ubicacionRepository;
+
     @Autowired
     //Constructor
     public UbicacionService( UbicacionRepository ubicacionRepository){
         this.ubicacionRepository = ubicacionRepository;
     }
-    public List<Ubicacion> getUbicacion () {return ubicacionRepository.findAll();}
 
-    public Ubicacion getUbicacionById(Long ubicacionId){
-        return ubicacionRepository.findById (ubicacionId).orElseThrow(
-                () -> new IllegalStateException("Ubicacion does not exists" + ubicacionId)
-        );
+    public void addUbicacion(Ubicacion objUbicacion){
+        Optional<Ubicacion> nombreUbicacion =
+                ubicacionRepository.findUbicacionByCalle( objUbicacion.getCalle());
+        if(nombreUbicacion.isPresent()){
+            System.out.println("Ya existe calle");
+        }else{
+            System.out.println("Se puede agregar calle");
+        }
     }
 
-    public void deleteUbicacionById(Long ubicId) {
-        if (ubicacionRepository.existsById(ubicId)) {
-            ubicacionRepository.deleteById(ubicId);
-        } else {
-            throw new IllegalStateException("Ubicacion does not exist " + ubicId);
-        }//else
-    } // deleteUbicacion
+    public Ubicacion getUbicacion(Long idubicacion){
+        if(ubicacionRepository.existsById(idubicacion)){
+            return ubicacionRepository.findById(idubicacion);
+        }
+    }
 
-    public void addUbicacion(Ubicacion ubicacion){
-        Optional<Ubicacion> ubicacionById = ubicacionRepository.findById(ubicacion.getId_ubicacion());
-        if (ubicacionById.isPresent()) {
-            throw new IllegalStateException("Ubicacion exist !!!");
-        } //if
 
-        ubicacionRepository.save(ubicacion);
-    }//addUser
+    public void deleteUbicacionbyId(Long idubicacion){
+        if(idubicacion<=lista.size()){
+            lista.remove(idubicacion.intValue()-1);
+        }
+    }// deleteUbicacionbyId
 
-    public void updateUbicacion(Long ubicId, Ubicacion newUbicacion) {
-        if (! ubicacionRepository.existsById(ubicId)) {
-            throw new IllegalStateException("User does not exist " + ubicId);
-        }//if ! exists
 
-        Ubicacion ubic = ubicacionRepository.getById(ubicId);
-        if (newUbicacion!=null) {
-            if (!newUbicacion.getCalle().equals(ubic.getCalle())) ubic.setCalle(newUbicacion.getCalle());
-            if (!newUbicacion.getNum_int().equals(ubic.getNum_int())) ubic.setNum_int(newUbicacion.getNum_int());
-            if (!newUbicacion.getNum_ext().equals(ubic.getNum_ext())) ubic.setNum_ext(newUbicacion.getNum_ext());
-            if (!newUbicacion.getMunicipio().equals(ubic.getMunicipio())) ubic.setMunicipio(newUbicacion.getMunicipio());
-            if (!newUbicacion.getCodigo_postal().equals(ubic.getCodigo_postal())) ubic.setCodigo_postal(newUbicacion.getCodigo_postal());
-            if (!newUbicacion.getEstado().equals(ubic.getEstado())) ubic.setEstado(newUbicacion.getEstado());
-            ubicacionRepository.save(ubic);
-        }//if
-    }// updateUser
+
 }
