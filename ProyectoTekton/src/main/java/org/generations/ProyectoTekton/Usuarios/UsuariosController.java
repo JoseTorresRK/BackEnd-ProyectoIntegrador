@@ -1,57 +1,51 @@
 package org.generations.ProyectoTekton.Usuarios;
-
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
 
 @RestController
-@RequestMapping(path="api/usuarios")
+@RequestMapping(path = "api/users/")
 public class UsuariosController {
 
-    private final UsuarioService usuarioService;
+    private final UsuariosService userService;
 
     @Autowired
-    public UsuariosController(UsuarioService usuarioService) {
-        this.usuarioService = usuarioService;
-    }
-    // Get lista usuarios
+    public UsuariosController(UsuariosService userService) {
+        this.userService = userService;
+    }//constructor
+
     @GetMapping
-    public List<Usuarios> getUsuarios() {return usuarioService.getUsuarios();}
-
-    // Get Usuario por ID
-    @GetMapping( path = "{usuariosId}")
-    public Usuarios getUsuariosbyId(@PathVariable ("usuariosId") Long usuariosId){
-        return usuarioService.getUsuariosbyId(usuariosId);
+    public List<Usuarios> getUsarios() {
+        return userService.getUsers();
+    }//getUsers
+    @GetMapping(path="{idusuarios}")
+    public Usuarios getUser(@PathVariable("idusuarios") Long userId) {
+        return userService.getUser(userId);
+    }//getUser
+    @GetMapping(path = "/login")
+    public Optional<Usuarios> getUser(@RequestParam String usuario, @RequestParam String contrasena){
+        return userService.getUser(usuario,contrasena);
     }
-
-    // DELETE usuario por ID
-    @DeleteMapping( path = "{usuariosId}")
-    public void deleteUsuariobyId(
-            @PathVariable ("usuariosId") Long usuariosId){
-        usuarioService.deleteUsuarios(usuariosId);
-    }
-
-    //POST usuario
-
     @PostMapping
-    public void addUsuarios(@RequestBody Usuarios usuario){
-        usuarioService.addUsuarios(usuario);
+    public void addUser(@RequestBody Usuarios usr){
+        userService.addUser(usr);
+    }// addUser
+    @PutMapping(path = "/Imag/{idusuarios}")
+    public void UpdateImagen(@PathVariable("idusuarios") Long userId,@RequestParam String Imagen){
+        userService.updateImagen(userId,Imagen);
+    }
+    @PutMapping(path = "/Desc/{idusuarios}")
+    public void UpdateDesc(@PathVariable("idusuarios") Long userId,@RequestParam String Desc){
+        userService.updateDesc(userId,Desc);
+    }
+    @PutMapping(path = "/contacto/{idusuarios}")
+    public void UpdateContacto(@PathVariable("idusuarios") Long userId,@RequestParam String email,@RequestParam String telefono){
+        userService.uptadeContacto(userId,email,telefono);
     }
 
-    // PUT usuario por ID
-    @PutMapping( path = "{usuariosId}")
-    public void updateUsuarios(@PathVariable("usuariosId") Long usuariosId,
-                               @RequestParam(required=false) String nombre,
-                               @RequestParam(required=false) int tipo,
-                               @RequestParam(required=false) int estrellas,
-                               @RequestParam(required=false) String descripcion_usuario,
-                               @RequestParam(required=false) String img_perfil,
-                               @RequestParam(required=false) String email,
-                               @RequestParam(required = false) ArrayList<String> categorias,
-                               @RequestParam(required = false) ArrayList<String> subcategorias){
-        usuarioService.updateUsuarios(usuariosId,nombre,tipo,estrellas,descripcion_usuario,img_perfil,email,categorias,subcategorias);
-    }
 
-}//Usuarios Controller
+}
