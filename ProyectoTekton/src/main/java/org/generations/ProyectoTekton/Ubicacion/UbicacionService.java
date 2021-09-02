@@ -17,6 +17,7 @@ public class UbicacionService {
     public UbicacionService( UbicacionRepository ubicacionRepository){
         this.ubicacionRepository = ubicacionRepository;
     }
+
     public List<Ubicacion> getUbicacion () {return ubicacionRepository.findAll();}
 
     public Ubicacion getUbicacionById(Long ubicacionId){
@@ -44,7 +45,7 @@ public class UbicacionService {
 
     public void updateUbicacion(Long ubicId, Ubicacion newUbicacion) {
         if (! ubicacionRepository.existsById(ubicId)) {
-            throw new IllegalStateException("User does not exist " + ubicId);
+            throw new IllegalStateException("Ubicacion does not exist " + ubicId);
         }//if ! exists
 
         Ubicacion ubic = ubicacionRepository.getById(ubicId);

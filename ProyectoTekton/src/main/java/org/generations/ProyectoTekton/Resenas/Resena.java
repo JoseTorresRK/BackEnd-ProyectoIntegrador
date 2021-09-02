@@ -1,9 +1,20 @@
 package org.generations.ProyectoTekton.Resenas;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="resenas")
 public class Resena {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name="idresenas", unique = true, nullable = false)
     private Long id_resena;
+    @Column(name="nombretrabajo")
     private String nombre_trabajo;
+    @Column(name="descripcion")
     private String descripcion;
+    @Column(name="estrellas")
     private int estrellas;
 
     public Resena(Long id_resena, String nombre_trabajo, String descripcion, int estrellas) {
@@ -12,6 +23,8 @@ public class Resena {
         this.descripcion = descripcion;
         this.estrellas = estrellas;
     }// contructor
+
+    public Resena(){} // default constructor
 
     public Long getId_resena() {
         return id_resena;
