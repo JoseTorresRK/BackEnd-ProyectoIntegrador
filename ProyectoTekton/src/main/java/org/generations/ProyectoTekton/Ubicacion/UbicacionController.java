@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(path="api/ubicacion")
+@RequestMapping(path="api/ubicacion/")
 public class UbicacionController {
     private final UbicacionService ubicacionService;
 
