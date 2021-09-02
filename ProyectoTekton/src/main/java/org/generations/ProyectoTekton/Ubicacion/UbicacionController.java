@@ -13,5 +13,5 @@ public class UbicacionController {
     public UbicacionController ( UbicacionService ubicacionService){
         this.ubicacionService = ubicacionService;
     }
-    
+
 }

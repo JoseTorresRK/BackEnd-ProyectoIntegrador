@@ -8,7 +8,7 @@ public class Ubicacion {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name="id_ubicacion", unique = true, nullable = false)
-    private int id_ubicacion;
+    private Long id_ubicacion;
     @Column(name="estado", nullable = false)
     private String estado;
     @Column(name="municipio", nullable = false)
@@ -22,7 +22,7 @@ public class Ubicacion {
     @Column(name="num_int", nullable = false)
     private String num_int;
 
-    public Ubicacion(int id_ubicacion, String estado,
+    public Ubicacion(Long id_ubicacion, String estado,
                      String municipio, String calle, String codigo_postal,
                      String num_ext, String num_int) {
         this.id_ubicacion = id_ubicacion;
@@ -36,11 +36,11 @@ public class Ubicacion {
 
     //Getter and Setter
 
-    public int getId_ubicacion() {
+    public Long getId_ubicacion() {
         return id_ubicacion;
     }
 
-    public void setId_ubicacion(int id_ubicacion) {
+    public void setId_ubicacion(Long id_ubicacion) {
         this.id_ubicacion = id_ubicacion;
     }
 
