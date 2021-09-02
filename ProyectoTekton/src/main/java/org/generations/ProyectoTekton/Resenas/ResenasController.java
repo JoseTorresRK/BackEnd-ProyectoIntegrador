@@ -1,14 +1,12 @@
 package org.generations.ProyectoTekton.Resenas;
 
-import org.generations.ProyectoTekton.Usuarios.Usuarios;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping(path="api/resenas")
+@RequestMapping(path="api/resenas/")
 public class ResenasController {
     private final ResenasService resenasService;
 
@@ -20,15 +18,16 @@ public class ResenasController {
     public List<Resena> getResenas() {
         return resenasService.getResenas();
     }//get listaResenas
-    @GetMapping(path="{idResenas}")
-    public Resena getResenasbyId(@PathVariable("idResenas")Long idResenas) {
+
+    @GetMapping(path="{idresenas}")
+    public Resena getResenasbyId(@PathVariable("idresenas")Long idResenas) {
         return resenasService.getResenabyId(idResenas);
     }//get ResenasbyId
 
     // DELETE Resena por ID
-    @DeleteMapping( path = "{idResenas}")
+    @DeleteMapping( path = "{idresenas}")
     public void deleteResenasbyId(
-            @PathVariable ("idResenas") Long idResenas){
+            @PathVariable ("idresenas") Long idResenas){
         resenasService.deleteResena(idResenas);
     }
 
@@ -39,13 +38,20 @@ public class ResenasController {
         resenasService.addResena(resena);
     }
 
+    /*
     // PUT Resena por ID
-    @PutMapping( path = "{idResenas}")
-    public void updateResenas(@PathVariable("idResenas") Long idResenas,
+    @PutMapping( path = "{idresenas}")
+    public void updateResenas(@PathVariable("idresenas") Long idResenas,
                                @RequestParam(required=false) String nombreTrabajo,
                                @RequestParam(required=false) String descripcionTrabajo,
                                @RequestParam(required=false) int estrellas){
         resenasService.updateResena(idResenas,nombreTrabajo,descripcionTrabajo,estrellas);
+    }
+    */
+    // PUT Resena por ID
+    @PutMapping( path = "{idresenas}")
+    public void updateResenas(@PathVariable("idresenas") Long idubic, @RequestBody Resena newresena){
+        resenasService.updateResena(idubic,newresena);
     }
 
 }//class resenas controller
