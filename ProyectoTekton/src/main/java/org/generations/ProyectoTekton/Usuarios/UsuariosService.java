@@ -1,33 +1,31 @@
+package org.generations.ProyectoTekton.Usuarios;
 
-package org.generation.Tekton.Usuarios;
-
-import org.generation.utils.SHAUtil;
+//import org.generation.utils.SHAUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-
 @Service
-public class UserService {
+public class UsuariosService {
     private final UserRepository userRepository;
 
     @Autowired
-    public UserService(UserRepository userRepository) {
+    public UsuariosService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }//constructor
 
-    public List<user> getUsers(){
+    public List<Usuarios> getUsers(){
         return userRepository.findAll();
     }// getUsers
 
-    public user getUser(Long userId){
+    public Usuarios getUser(Long userId){
         return userRepository.findById(userId).orElseThrow(
                 () -> new IllegalStateException("User does not exists " + userId)
         );
     }// getUser
-    public Optional<user> getUser(String nombre,String contrasena){
-        Optional<user> usuario=userRepository.findUserByName(nombre);
+    public Optional<Usuarios> getUser(String nombre, String contrasena){
+        Optional<Usuarios> usuario=userRepository.findUserByName(nombre);
         if(!usuario.isPresent()){
             throw new IllegalStateException("User does not exist " +nombre);
         }
@@ -42,9 +40,9 @@ public class UserService {
         }//else
     } // deleteUser
 
-    public void addUser(user usr){
+    public void addUser(Usuarios usr){
 
-        Optional<user> userByName = userRepository.findUserByName(usr.getNombre());
+        Optional<Usuarios> userByName = userRepository.findUserByName(usr.getNombre());
         if (userByName.isPresent()) {
             throw new IllegalStateException("username exist !!!");
         } //if
@@ -55,8 +53,8 @@ public class UserService {
         if(!userRepository.existsById(userId)){
             throw new IllegalStateException("User does not exist " + userId);
         }
-        user use=userRepository.getById(userId);
-        if(use.getImg_perfil()==Imagen){
+        Usuarios use=userRepository.getById(userId);
+        if(!use.getImg_perfil().equals(Imagen)){
             use.setImg_perfil(Imagen);
         }
         userRepository.save(use);
@@ -65,7 +63,7 @@ public class UserService {
         if(!userRepository.existsById(userId)) {
             throw new IllegalStateException("User does not exist " + userId);
         }
-        user use= userRepository.getById(userId);
+        Usuarios use= userRepository.getById(userId);
         if(Desc.length()<=500){
 
             use.setDescripcion_usuario(Desc);
@@ -80,15 +78,16 @@ public class UserService {
         if(!userRepository.existsById(userId)) {
             throw new IllegalStateException("User does not exist " + userId);
         }
-       user use=userRepository.getById(userId);
+        Usuarios use=userRepository.getById(userId);
         if(!use.getEmail().equals(contacto)){
-            Optional<user> usuario=userRepository.findUserByName(contacto);
+            Optional<Usuarios> usuario=userRepository.findUserByName(contacto);
             if(usuario.isPresent()){
                 throw new IllegalStateException("username exist !!!");
             }
             use.setEmail(contacto);
             use.setTelefono(tel);
         }
+        userRepository.save(use);
     }
 
   /*  public void updateUser(Long userId, String oldPassword, String newPassword) {
@@ -108,4 +107,4 @@ public class UserService {
         }//if
     }// updateUser
 */
-}//class UserService
+}

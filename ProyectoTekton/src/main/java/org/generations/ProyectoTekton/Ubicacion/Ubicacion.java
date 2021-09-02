@@ -48,6 +48,8 @@ public class Ubicacion {
         this.longitud = longitud;
     }//constructor
 
+    public Ubicacion(){}//constructor por default
+
     public Long getIdubicacion() {
         return idubicacion;
     }
