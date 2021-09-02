@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(path="api/ubicacion")
+@RequestMapping(path="api/ubicacion/")
 public class UbicacionController {
     private final UbicacionService ubicacionService;
 
@@ -18,11 +18,11 @@ public class UbicacionController {
     public List<Ubicacion> getUsers() {
         return ubicacionService.getUbicacion();
     }//getUsers
-    @GetMapping(path="{idubicacion}")
+    @GetMapping(path="{ubicacionId}")
     public Ubicacion getUser(@PathVariable("ubicacionId") Long ubicacionId) {
         return ubicacionService.getUbicacionById(ubicacionId);
     }//getUser
-    @DeleteMapping(path="{idubicacion}")
+    @DeleteMapping(path="{ubicacionId}")
     public void deleteUser(@PathVariable("ubicacionId") Long ubicacionId) {
         ubicacionService.deleteUbicacionById(ubicacionId);
     }//deleteUser
@@ -30,7 +30,7 @@ public class UbicacionController {
     public void addUser(@RequestBody Ubicacion ubic){
         ubicacionService.addUbicacion(ubic);
     }// addUser
-    @PutMapping(path="{idubicacion}")
+    @PutMapping(path="{ubicacionId}")
     public void updateUser (@PathVariable("ubicacionId") Long ubicacionId,
                             @RequestBody Ubicacion ubic) {
         ubicacionService.updateUbicacion(ubicacionId, ubic);
