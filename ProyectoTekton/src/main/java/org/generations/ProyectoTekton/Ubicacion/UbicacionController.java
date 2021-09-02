@@ -1,5 +1,6 @@
 package org.generations.ProyectoTekton.Ubicacion;
 
+import org.generations.ProyectoTekton.Usuarios.Usuarios;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,28 +13,29 @@ public class UbicacionController {
 
     @Autowired
     public UbicacionController ( UbicacionService ubicacionService){
+
         this.ubicacionService = ubicacionService;
     }
+
     @GetMapping
-    public List<Ubicacion> getUsers() {
-        return ubicacionService.getUbicacion();
-    }//getUsers
-    @GetMapping(path="{ubicacionId}")
-    public Ubicacion getUser(@PathVariable("ubicacionId") Long ubicacionId) {
-        return ubicacionService.getUbicacionById(ubicacionId);
-    }//getUser
-    @DeleteMapping(path="{ubicacionId}")
-    public void deleteUser(@PathVariable("ubicacionId") Long ubicacionId) {
-        ubicacionService.deleteUbicacionById(ubicacionId);
-    }//deleteUser
+    public List<Ubicacion> getUbicacion(){return ubicacionService.getUbicacion();}
+
     @PostMapping
-    public void addUser(@RequestBody Ubicacion ubic){
-        ubicacionService.addUbicacion(ubic);
-    }// addUser
-    @PutMapping(path="{ubicacionId}")
-    public void updateUser (@PathVariable("ubicacionId") Long ubicacionId,
-                            @RequestBody Ubicacion ubic) {
-        ubicacionService.updateUbicacion(ubicacionId, ubic);
-    }//updateUser
+    public void addUbicacion (@RequestBody Ubicacion objUbicacion){
+        ubicacionService.addUbicacion(objUbicacion);
+    }//addUbicacion
+
+    @GetMapping(path="{idubicacion}")
+    public Ubicacion getUbicacion( @PathVariable("idubicacion") Long idubicacion){
+        return ubicacionService.getUbicacionbyId(idubicacion);
+    }
+
+
+    // DELETE usuario por ID
+    @DeleteMapping( path = "{idubicacion}")
+    public void deleteUbicacionbyId(
+            @PathVariable ("idubicacion") Long idubicacion){
+        ubicacionService.deleteUbicacionbyId(idubicacion);
+    }// DELETE usuario por ID
 
 }
