@@ -1,4 +1,4 @@
-package org.generations.ProyectoTekton.Usuarios;
+package org.generations.ProyectoTekton.Publicaciones;
 
 public class Subcategoria {
     private String subcategoria;
