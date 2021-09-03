@@ -8,8 +8,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path="api/ubicacion")
-@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST})
-
+// @CrossOrigin configurar el origen en produccion para una ruta especifico o pagina, quitar la linea completa
+@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
 public class UbicacionController {
     private final UbicacionService ubicacionService;
 

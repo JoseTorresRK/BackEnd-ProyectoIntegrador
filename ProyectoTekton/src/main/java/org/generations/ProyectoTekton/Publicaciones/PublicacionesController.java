@@ -8,7 +8,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path="api/publicaciones/")
-@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST})
+@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
 
 public class PublicacionesController {
     private final PublicacionesService publicacionesService;
