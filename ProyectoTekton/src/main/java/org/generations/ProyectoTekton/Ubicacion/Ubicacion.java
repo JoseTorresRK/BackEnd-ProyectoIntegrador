@@ -7,41 +7,55 @@ public class Ubicacion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name="id_ubicacion", unique = true, nullable = false)
-    private Long id_ubicacion;
+    @Column(name="idubicacion", unique = true, nullable = false)
+    private Long idubicacion;
+
     @Column(name="estado", nullable = false)
     private String estado;
+
     @Column(name="municipio", nullable = false)
     private String municipio;
+
     @Column(name="calle", nullable = false)
     private String calle;
-    @Column(name="codigo_postal", nullable = false)
-    private String codigo_postal;
-    @Column(name="num_ext", nullable = false)
-    private String num_ext;
-    @Column(name="num_int", nullable = false)
-    private String num_int;
 
-    public Ubicacion(Long id_ubicacion, String estado,
-                     String municipio, String calle, String codigo_postal,
-                     String num_ext, String num_int) {
-        this.id_ubicacion = id_ubicacion;
+    @Column(name="codigopostal", nullable = false)
+    private String codigopostal;
+
+    @Column(name="numeroext", nullable = false)
+    private String numeroext;
+
+    @Column(name="numeroint")
+    private String numeroint;
+
+    @Column(name="latitud")
+    private float latitud;
+
+    @Column(name="longitud")
+    private float longitud;
+
+    public Ubicacion(Long idubicacion, String estado, String municipio,
+                     String calle, String codigopostal, String numeroext,
+                     String numeroint, float latitud, float longitud) {
+        this.idubicacion = idubicacion;
         this.estado = estado;
         this.municipio = municipio;
         this.calle = calle;
-        this.codigo_postal = codigo_postal;
-        this.num_ext = num_ext;
-        this.num_int = num_int;
-    }// constructor
+        this.codigopostal = codigopostal;
+        this.numeroext = numeroext;
+        this.numeroint = numeroint;
+        this.latitud = latitud;
+        this.longitud = longitud;
+    }//constructor
 
-    //Getter and Setter
+    public Ubicacion(){}//constructor por default
 
-    public Long getId_ubicacion() {
-        return id_ubicacion;
+    public Long getIdubicacion() {
+        return idubicacion;
     }
 
-    public void setId_ubicacion(Long id_ubicacion) {
-        this.id_ubicacion = id_ubicacion;
+    public void setIdubicacion(Long idubicacion) {
+        this.idubicacion = idubicacion;
     }
 
     public String getEstado() {
@@ -68,40 +82,62 @@ public class Ubicacion {
         this.calle = calle;
     }
 
-    public String getCodigo_postal() {
-        return codigo_postal;
+    public String getCodigopostal() {
+        return codigopostal;
     }
 
-    public void setCodigo_postal(String codigo_postal) {
-        this.codigo_postal = codigo_postal;
+    public void setCodigopostal(String codigopostal) {
+        this.codigopostal = codigopostal;
     }
 
-    public String getNum_ext() {
-        return num_ext;
+    public String getNumeroext() {
+        return numeroext;
     }
 
-    public void setNum_ext(String num_ext) {
-        this.num_ext = num_ext;
+    public void setNumeroext(String numeroext) {
+        this.numeroext = numeroext;
     }
 
-    public String getNum_int() {
-        return num_int;
+    public String getNumeroint() {
+        return numeroint;
     }
 
-    public void setNum_int(String num_int) {
-        this.num_int = num_int;
+    public void setNumeroint(String numeroint) {
+        this.numeroint = numeroint;
     }
+
+    public float getLatitud() {
+        return latitud;
+    }
+
+    public void setLatitud(float latitud) {
+        this.latitud = latitud;
+    }
+
+    public float getLongitud() {
+        return longitud;
+    }
+
+    public void setLongitud(float longitud) {
+        this.longitud = longitud;
+    }
+
+
+    // --Getters --Setters
+
 
     @Override
     public String toString() {
-        return "Usuarios{" +
-                "id_ubicacion;='" + id_ubicacion + '\'' +
+        return "Ubicacion{" +
+                "idubicacion=" + idubicacion +
                 ", estado='" + estado + '\'' +
                 ", municipio='" + municipio + '\'' +
-                ", calle=" + calle +
-                ", codigo_postal='" + codigo_postal + '\'' +
-                ", num_ext='" + num_ext + '\'' +
-                ", num_int=" + num_int +
+                ", calle='" + calle + '\'' +
+                ", codigopostal='" + codigopostal + '\'' +
+                ", numeroext='" + numeroext + '\'' +
+                ", numeroint='" + numeroint + '\'' +
+                ", latitud=" + latitud +
+                ", longitud=" + longitud +
                 '}';
     }
 }// Ubicacion
