@@ -1,10 +1,10 @@
 CREATE DATABASE  IF NOT EXISTS `mydb` /*!40100 DEFAULT CHARACTER SET utf8 */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `mydb`;
--- MySQL dump 10.13  Distrib 8.0.26, for macos11 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.20, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: mydb
+-- Host: localhost    Database: mydb
 -- ------------------------------------------------------
--- Server version	8.0.26
+-- Server version	8.0.22
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -18,27 +18,29 @@ USE `mydb`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `SubCategoria`
+-- Table structure for table `resenas`
 --
 
-DROP TABLE IF EXISTS `SubCategoria`;
+DROP TABLE IF EXISTS `resenas`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `SubCategoria` (
-  `idSubCategoria` int NOT NULL AUTO_INCREMENT,
-  `Desc` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`idSubCategoria`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb3;
+CREATE TABLE `resenas` (
+  `idresenas` int NOT NULL AUTO_INCREMENT,
+  `nombretrabajo` varchar(60) NOT NULL,
+  `descripcion` varchar(500) NOT NULL,
+  `estrellas` tinyint NOT NULL,
+  PRIMARY KEY (`idresenas`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `SubCategoria`
+-- Dumping data for table `resenas`
 --
 
-LOCK TABLES `SubCategoria` WRITE;
-/*!40000 ALTER TABLE `SubCategoria` DISABLE KEYS */;
-INSERT INTO `SubCategoria` VALUES (1,'Plantas exóticas'),(2,'Invernaderos'),(3,'Jardineras'),(4,'Árboles Frutales'),(5,'Árboles Bonsai'),(6,'Comida Intenacional'),(7,'Comida Casera'),(8,'Ingedientes de primera calidad'),(9,'Ingredientes organicos y frescos'),(10,'Platillos exóticos'),(11,'Muebles de jardín'),(12,'Estructuras metálicas generales'),(13,'Soldadura Smaw'),(14,'Soldadura Microalambre'),(15,'Cortadora de plasma'),(16,'Castillos y trabes'),(17,'Colados'),(18,'Muros'),(19,'Estructuras pequeñas'),(20,'Bardas'),(21,'Fregaderos'),(22,'Lavabos'),(23,'Tuberías tapadas'),(24,'Caños atascados'),(25,'Instalaciones sanitarias'),(26,'Muebles domésticos'),(27,'Estructurtas exteriores'),(28,'Cobertizos'),(29,'Barnices y pulidos'),(30,'Juguetes de madera');
-/*!40000 ALTER TABLE `SubCategoria` ENABLE KEYS */;
+LOCK TABLES `resenas` WRITE;
+/*!40000 ALTER TABLE `resenas` DISABLE KEYS */;
+INSERT INTO `resenas` VALUES (1,'Busco plomero - Zona Centro','Excelentes trabajo, limpiza única, excelente trato y profesionalidad',5),(2,'Busco Jardinero - Querétaro','Gran imaginación, tiene su herramienta profesional, es genial en lo que hace, recomendado al cien',5),(3,'Heerreo con experiencia - Estado de México','Excelente trabajo, ha hecho un trabajo limpio, confiable y atendiendo puntual a las fechas de entrega',4),(4,'Se solicita Cocinero - Zona hotelera Guadalajara','Excelente sazón, limpieza y presentación. Nivel de Chef internacional.',4),(5,'Carpintero - Urgente','Excelente trato, profesional, tiempo record de entrega.',5);
+/*!40000 ALTER TABLE `resenas` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -50,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-09-01 18:52:47
+-- Dump completed on 2021-09-01 23:14:42
