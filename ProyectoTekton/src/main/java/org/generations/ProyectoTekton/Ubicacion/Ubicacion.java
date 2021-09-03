@@ -2,12 +2,12 @@ package org.generations.ProyectoTekton.Ubicacion;
 
 import javax.persistence.*;
 @Entity
-@Table(name="Ubicacion")
+@Table(name="ubicacion")
 public class Ubicacion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name="id_ubicacion", unique = true, nullable = false)
+    @Column(name="idubicacion", unique = true, nullable = false)
     private Long id_ubicacion;
     @Column(name="estado", nullable = false)
     private String estado;
@@ -15,11 +15,11 @@ public class Ubicacion {
     private String municipio;
     @Column(name="calle", nullable = false)
     private String calle;
-    @Column(name="codigo_postal", nullable = false)
+    @Column(name="codigopostal", nullable = false)
     private String codigo_postal;
-    @Column(name="num_ext", nullable = false)
+    @Column(name="numeroext", nullable = false)
     private String num_ext;
-    @Column(name="num_int", nullable = false)
+    @Column(name="numeroint", nullable = false)
     private String num_int;
 
     public Ubicacion(Long id_ubicacion, String estado,
