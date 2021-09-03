@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `mydb` /*!40100 DEFAULT CHARACTER SET utf8 */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `mydb`;
 -- MySQL dump 10.13  Distrib 8.0.26, for macos11 (x86_64)
 --
 -- Host: 127.0.0.1    Database: mydb
@@ -18,31 +16,35 @@ USE `mydb`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `empleados_categorias`
+-- Table structure for table `ubicacion`
 --
 
-DROP TABLE IF EXISTS `empleados_categorias`;
+DROP TABLE IF EXISTS `ubicacion`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `empleados_categorias` (
-  `idempleados_categorias` int NOT NULL AUTO_INCREMENT,
-  `idUsuario` int NOT NULL,
-  `id_relacion` int NOT NULL,
-  PRIMARY KEY (`idempleados_categorias`,`idUsuario`,`id_relacion`),
-  KEY `fk_empleados_categorias_Usuarios1_idx` (`idUsuario`),
-  KEY `fk_empleados_categorias_Categoria_Subcategoria1_idx` (`id_relacion`),
-  CONSTRAINT `id_relacion` FOREIGN KEY (`id_relacion`) REFERENCES `Categoria_Subcategoria` (`idCategoria_SubCategorias`),
-  CONSTRAINT `id_usuarios` FOREIGN KEY (`idUsuario`) REFERENCES `Usuarios` (`idUsuarios`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+CREATE TABLE `ubicacion` (
+  `idubicacion` int NOT NULL AUTO_INCREMENT,
+  `estado` varchar(45) NOT NULL,
+  `municipio` varchar(60) NOT NULL,
+  `calle` varchar(45) NOT NULL,
+  `codigopostal` varchar(45) NOT NULL,
+  `numeroext` varchar(10) NOT NULL,
+  `numeroint` varchar(10) DEFAULT NULL,
+  `latitud` float DEFAULT NULL,
+  `longitud` float DEFAULT NULL,
+  PRIMARY KEY (`idubicacion`),
+  UNIQUE KEY `idubicacion_UNIQUE` (`idubicacion`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `empleados_categorias`
+-- Dumping data for table `ubicacion`
 --
 
-LOCK TABLES `empleados_categorias` WRITE;
-/*!40000 ALTER TABLE `empleados_categorias` DISABLE KEYS */;
-/*!40000 ALTER TABLE `empleados_categorias` ENABLE KEYS */;
+LOCK TABLES `ubicacion` WRITE;
+/*!40000 ALTER TABLE `ubicacion` DISABLE KEYS */;
+INSERT INTO `ubicacion` VALUES (1,'Estado de Mexico','Texcoco','cien','54129','45','234',19.486,-98.8124),(2,'Mexico','Los Reyes','andares','52540','47','24',19.432,-99.133),(3,'Queretaro','Jinetes','juriquilla','62349','89','35',19.4289,-99.1621),(4,'Merida','Munal','anegas','63219','13','46',20.589,-100.393),(5,'Guanajuato','Leon','Nochebuena','72229','56','765',21.111,-101.633),(6,'Estado de Mexico','Texcoco','5 mayo','55000','09','',19.486,-98.8124),(7,'Estado de Mexico','Texcoco','5 mayo','55000','09',NULL,19.486,-98.8124),(8,'Estado de Mexico','Texcoco','10 mayo','55000','09',NULL,19.486,-98.8124);
+/*!40000 ALTER TABLE `ubicacion` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -54,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-09-01 18:52:47
+-- Dump completed on 2021-09-02 20:29:09
