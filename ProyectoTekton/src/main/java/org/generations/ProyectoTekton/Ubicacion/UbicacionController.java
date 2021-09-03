@@ -18,13 +18,17 @@ public class UbicacionController {
 
         this.ubicacionService = ubicacionService;
     }
-
+    @GetMapping("/ultima")
+    public Ubicacion getUltima(){
+        return ubicacionService.getUltimaUbicacion();
+    }
     @GetMapping
     public List<Ubicacion> getUbicacion(){return ubicacionService.getUbicacion();}
 
     @PostMapping
     public void addUbicacion (@RequestBody Ubicacion objUbicacion){
         ubicacionService.addUbicacion(objUbicacion);
+        
     }//addUbicacion
 
     @GetMapping(path="{idubicacion}")
