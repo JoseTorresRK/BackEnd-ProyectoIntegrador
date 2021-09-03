@@ -26,9 +26,9 @@ public class UbicacionController {
     public List<Ubicacion> getUbicacion(){return ubicacionService.getUbicacion();}
 
     @PostMapping
-    public Ubicacion addUbicacion (@RequestBody Ubicacion objUbicacion){
+    public void addUbicacion (@RequestBody Ubicacion objUbicacion){
         ubicacionService.addUbicacion(objUbicacion);
-        return objUbicacion;
+        
     }//addUbicacion
 
     @GetMapping(path="{idubicacion}")
