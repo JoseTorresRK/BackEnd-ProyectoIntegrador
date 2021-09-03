@@ -7,11 +7,13 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.OptionalInt;
 
 @Service
 public class UbicacionService {
     public final ArrayList<Ubicacion> lista = new ArrayList<Ubicacion>();
     private final UbicacionRepository ubicacionRepository;
+
     @Autowired
     //Constructor
     public UbicacionService( UbicacionRepository ubicacionRepository){
@@ -20,43 +22,61 @@ public class UbicacionService {
 
     public List<Ubicacion> getUbicacion () {return ubicacionRepository.findAll();}
 
-    public Ubicacion getUbicacionById(Long ubicacionId){
-        return ubicacionRepository.findById (ubicacionId).orElseThrow(
-                () -> new IllegalStateException("Ubicacion does not exists" + ubicacionId)
-        );
+    public void addUbicacion(Ubicacion objUbicacion){
+       Optional<Ubicacion> ubicaciondyId = ubicacionRepository.findById(objUbicacion.getIdubicacion());
+        if(ubicaciondyId.isPresent()){
+            throw new IllegalStateException("Ubicacion ya existente");
+        }else{
+            ubicacionRepository.save(objUbicacion);
+        }
     }
 
-    public void deleteUbicacionById(Long ubicId) {
-        if (ubicacionRepository.existsById(ubicId)) {
-            ubicacionRepository.deleteById(ubicId);
-        } else {
-            throw new IllegalStateException("Ubicacion does not exist " + ubicId);
-        }//else
-    } // deleteUbicacion
+    public Ubicacion getUbicacionbyId(Long idubicacion){
 
-    public void addUbicacion(Ubicacion ubicacion){
-        Optional<Ubicacion> ubicacionById = ubicacionRepository.findById(ubicacion.getId_ubicacion());
-        if (ubicacionById.isPresent()) {
-            throw new IllegalStateException("Ubicacion exist !!!");
-        } //if
+            return ubicacionRepository.findById(idubicacion).orElseThrow(
+                    () -> new IllegalStateException("Ubicacion does not exists" + idubicacion));
 
-        ubicacionRepository.save(ubicacion);
-    }//addUser
+    }
+
+
+    public void deleteUbicacionbyId(Long idubicacion){
+        if(ubicacionRepository.existsById(idubicacion)){
+            ubicacionRepository.deleteById(idubicacion);
+        }else{
+            throw new IllegalStateException("Ubicacion doesn't exists"+ idubicacion);
+        }
+    }// deleteUbicacionbyId
 
     public void updateUbicacion(Long ubicId, Ubicacion newUbicacion) {
-        if (! ubicacionRepository.existsById(ubicId)) {
+        if (!ubicacionRepository.existsById(ubicId)) {
             throw new IllegalStateException("Ubicacion does not exist " + ubicId);
         }//if ! exists
-
-        Ubicacion ubic = ubicacionRepository.getById(ubicId);
-        if (newUbicacion!=null) {
-            if (!newUbicacion.getCalle().equals(ubic.getCalle())) ubic.setCalle(newUbicacion.getCalle());
-            if (!newUbicacion.getNum_int().equals(ubic.getNum_int())) ubic.setNum_int(newUbicacion.getNum_int());
-            if (!newUbicacion.getNum_ext().equals(ubic.getNum_ext())) ubic.setNum_ext(newUbicacion.getNum_ext());
-            if (!newUbicacion.getMunicipio().equals(ubic.getMunicipio())) ubic.setMunicipio(newUbicacion.getMunicipio());
-            if (!newUbicacion.getCodigo_postal().equals(ubic.getCodigo_postal())) ubic.setCodigo_postal(newUbicacion.getCodigo_postal());
-            if (!newUbicacion.getEstado().equals(ubic.getEstado())) ubic.setEstado(newUbicacion.getEstado());
-            ubicacionRepository.save(ubic);
-        }//if
-    }// updateUser
+        Ubicacion temporalUbicacion = ubicacionRepository.getById(ubicId);
+        if(newUbicacion != null){
+            if(!newUbicacion.getEstado().equals(temporalUbicacion.getEstado())){
+                temporalUbicacion.setEstado(newUbicacion.getEstado());
+            }
+            if(!newUbicacion.getMunicipio().equals(temporalUbicacion.getMunicipio())){
+                temporalUbicacion.setMunicipio(newUbicacion.getMunicipio());
+            }
+            if(!newUbicacion.getCalle().equals(temporalUbicacion.getCalle())){
+                temporalUbicacion.setCalle(newUbicacion.getCalle());
+            }
+            if(!newUbicacion.getCodigopostal().equals(temporalUbicacion.getCodigopostal())){
+                temporalUbicacion.setCodigopostal(newUbicacion.getCodigopostal());
+            }
+            if(!newUbicacion.getNumeroext().equals(temporalUbicacion.getNumeroext())){
+                temporalUbicacion.setNumeroext(newUbicacion.getNumeroint());
+            }
+            if(!newUbicacion.getNumeroint().equals(temporalUbicacion.getNumeroint())){
+                temporalUbicacion.setNumeroint(newUbicacion.getNumeroint());
+            }
+            if(newUbicacion.getLatitud() != temporalUbicacion.getLatitud()){
+                temporalUbicacion.setLatitud(newUbicacion.getLatitud());
+            }
+            if(newUbicacion.getLongitud() != temporalUbicacion.getLongitud()){
+                temporalUbicacion.setLongitud(newUbicacion.getLongitud());
+            }
+        }
+    }
 }
