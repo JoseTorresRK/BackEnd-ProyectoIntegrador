@@ -11,6 +11,9 @@ public class empleadoscategorias {
         this.id_relacion = id_relacion;
     }//constructor
 
+    public empleadoscategorias() {
+    }
+
     public Long getId_empleadoscategorias() {
         return id_empleadoscategorias;
     }//get empleados categorias
@@ -38,7 +41,6 @@ public class empleadoscategorias {
         this.id_relacion = id_relacion;
     }//set idrelacion
 
-    @Override
 
     @Override
     public String toString() {
