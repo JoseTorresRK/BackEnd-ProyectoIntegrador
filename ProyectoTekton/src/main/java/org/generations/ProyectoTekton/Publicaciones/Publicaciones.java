@@ -1,46 +1,65 @@
 package org.generations.ProyectoTekton.Publicaciones;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="Publicaciones")
 public class Publicaciones {
-    private int id_publicaciones;
-    private String nombre_trabajo;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name ="idpublicaciones", unique = true, nullable = false)
+    private Long idpublicaciones;
+
+    @Column(name ="nombretrabajo", nullable = true)
+    private String nombretrabajo;
+
+    @Column(name ="descripcion", nullable = true)
     private String descripcion;
-    private double precio_final;
-    private String estatus_trabajo;
-    private int idTrabajador;
-    private int idUbicacion;
-    private int idEmpleador;
 
-    //Constructor
-    public Publicaciones(int id_publicaciones, String nombre_trabajo,
-                         String descripcion, double precio_final,
-                         String estatus_trabajo, int idTrabajador,
-                         int idUbicacion, int idEmpleador) {
-        this.id_publicaciones = id_publicaciones;
-        this.nombre_trabajo = nombre_trabajo;
+    @Column(name ="preciofinal", nullable = true)
+    private double preciofinal;
+
+    @Column(name ="estatustrabajo", nullable = true)
+    private String estatustrabajo;
+
+    @Column(name ="idcliente", nullable = false)
+    private int idcliente;
+
+    @Column(name ="idubicacion", nullable = false)
+    private int idubicacion;
+
+    @Column(name ="idtrabajador", nullable = true)
+    private int idtrabajador;
+
+    public Publicaciones(Long idpublicaciones, String nombretrabajo, String descripcion, double preciofinal, String estatustrabajo, int idcliente, int idubicacion, int idtrabajador) {
+        this.idpublicaciones = idpublicaciones;
+        this.nombretrabajo = nombretrabajo;
         this.descripcion = descripcion;
-        this.precio_final = precio_final;
-        this.estatus_trabajo = estatus_trabajo;
-        this.idTrabajador = idTrabajador;
-        this.idUbicacion = idUbicacion;
-        this.idEmpleador = idEmpleador;
+        this.preciofinal = preciofinal;
+        this.estatustrabajo = estatustrabajo;
+        this.idcliente = idcliente;
+        this.idubicacion = idubicacion;
+        this.idtrabajador = idtrabajador;
     }
 
-    //Getter and Setter
-
-    public int getId_publicaciones() {
-        return id_publicaciones;
+    public Publicaciones() {
     }
 
-    public void setId_publicaciones(int id_publicaciones) {
-        this.id_publicaciones = id_publicaciones;
+    public Long getIdpublicaciones() {
+        return idpublicaciones;
     }
 
-    public String getNombre_trabajo() {
-        return nombre_trabajo;
+    public void setIdpublicaciones(Long idpublicaciones) {
+        this.idpublicaciones = idpublicaciones;
     }
 
-    public void setNombre_trabajo(String nombre_trabajo) {
-        this.nombre_trabajo = nombre_trabajo;
+    public String getNombretrabajo() {
+        return nombretrabajo;
+    }
+
+    public void setNombretrabajo(String nombretrabajo) {
+        this.nombretrabajo = nombretrabajo;
     }
 
     public String getDescripcion() {
@@ -51,57 +70,57 @@ public class Publicaciones {
         this.descripcion = descripcion;
     }
 
-    public double getPrecio_final() {
-        return precio_final;
+    public double getPreciofinal() {
+        return preciofinal;
     }
 
-    public void setPrecio_final(double precio_final) {
-        this.precio_final = precio_final;
+    public void setPreciofinal(double preciofinal) {
+        this.preciofinal = preciofinal;
     }
 
-    public String getEstatus_trabajo() {
-        return estatus_trabajo;
+    public String getEstatustrabajo() {
+        return estatustrabajo;
     }
 
-    public void setEstatus_trabajo(String estatus_trabajo) {
-        this.estatus_trabajo = estatus_trabajo;
+    public void setEstatustrabajo(String estatustrabajo) {
+        this.estatustrabajo = estatustrabajo;
     }
 
-    public int getIdTrabajador() {
-        return idTrabajador;
+    public int getIdcliente() {
+        return idcliente;
     }
 
-    public void setIdTrabajador(int idTrabajador) {
-        this.idTrabajador = idTrabajador;
+    public void setIdcliente(int idcliente) {
+        this.idcliente = idcliente;
     }
 
-    public int getIdUbicacion() {
-        return idUbicacion;
+    public int getIdubicacion() {
+        return idubicacion;
     }
 
-    public void setIdUbicacion(int idUbicacion) {
-        this.idUbicacion = idUbicacion;
+    public void setIdubicacion(int idubicacion) {
+        this.idubicacion = idubicacion;
     }
 
-    public int getIdEmpleador() {
-        return idEmpleador;
+    public int getIdtrabajador() {
+        return idtrabajador;
     }
 
-    public void setIdEmpleador(int idEmpleador) {
-        this.idEmpleador = idEmpleador;
+    public void setIdtrabajador(int idtrabajador) {
+        this.idtrabajador = idtrabajador;
     }
 
     @Override
     public String toString() {
-        return "Usuarios{" +
-                "id_publicaciones;='" + id_publicaciones + '\'' +
-                ", nombre_trabajo='" + nombre_trabajo + '\'' +
+        return "Publicaciones{" +
+                "idpublicaciones=" + idpublicaciones +
+                ", nombretrabajo='" + nombretrabajo + '\'' +
                 ", descripcion='" + descripcion + '\'' +
-                ", precio_final=" + precio_final +
-                ", estatus_trabajo='" + estatus_trabajo + '\'' +
-                ", idTrabajador='" + idTrabajador + '\'' +
-                ", idUbicacion=" + idUbicacion +
-                ", idEmpleador='" + idEmpleador + '\'' +
+                ", preciofinal=" + preciofinal +
+                ", estatustrabajo='" + estatustrabajo + '\'' +
+                ", idcliente=" + idcliente +
+                ", idubicacion=" + idubicacion +
+                ", idtrabajador=" + idtrabajador +
                 '}';
     }
 }//Publicaciones

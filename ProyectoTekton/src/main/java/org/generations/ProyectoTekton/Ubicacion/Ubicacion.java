@@ -2,7 +2,7 @@ package org.generations.ProyectoTekton.Ubicacion;
 
 import javax.persistence.*;
 @Entity
-@Table(name="Ubicacion")
+@Table(name="ubicacion")
 public class Ubicacion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
