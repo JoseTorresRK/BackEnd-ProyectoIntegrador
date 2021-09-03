@@ -31,42 +31,124 @@ import javax.persistence.*;
         private String pwd;
         @Column(name = "idubicacion",nullable = false)
         private Long idubicacion;
+        @Column(name= "categoria",nullable = true)
+        private String categoria;
+        @Column(name="subcategoria",nullable = true)
+        private String subcategoria;
 
-        public Usuarios(Long idusuarios, int tipo, String descripcionusuario, String nombre, int estrellas, String email, String telefono, String pwd, Long idubicacion, String imgperfil) {
-            this.idusuarios = idusuarios;
-            this.tipo = tipo;
-            this.descripcionusuario = descripcionusuario;
-            this.nombre = nombre;
-            this.estrellas = estrellas;
-            this.email = email;
-            this.telefono = telefono;
-            this.pwd = pwd;
-            this.idubicacion = idubicacion;
-            this.imgperfil=imgperfil;
-        }
+    public Usuarios(Long idusuarios, int tipo, String descripcionusuario, String imgperfil, String nombre, int estrellas, String email, String telefono, String pwd, Long idubicacion, String categoria, String subcategoria) {
+        this.idusuarios = idusuarios;
+        this.tipo = tipo;
+        this.descripcionusuario = descripcionusuario;
+        this.imgperfil = imgperfil;
+        this.nombre = nombre;
+        this.estrellas = estrellas;
+        this.email = email;
+        this.telefono = telefono;
+        this.pwd = pwd;
+        this.idubicacion = idubicacion;
+        this.categoria = categoria;
+        this.subcategoria = subcategoria;
+    }
 
-        public void setImg_perfil(String img_perfil) {
-            this.imgperfil = img_perfil;
-        }
+    public void setIdusuarios(Long idusuarios) {
+        this.idusuarios = idusuarios;
+    }
 
-        public String getImg_perfil() {
-            return imgperfil;
-        }
+    public void setTipo(int tipo) {
+        this.tipo = tipo;
+    }
 
-        public Usuarios() {
-        }//default constructor
+    public Usuarios() {
+    }
 
-        public void setId_usuarios(Long id_usuarios) {
-            this.idusuarios = idusuarios;
-        }
+    public void setDescripcionusuario(String descripcionusuario) {
+        this.descripcionusuario = descripcionusuario;
+    }
 
-        public void setTipo(int tipo) {
-            tipo = tipo;
-        }
+    public void setImgperfil(String imgperfil) {
+        this.imgperfil = imgperfil;
+    }
 
-        public void setDescripcion_usuario(String descripcion_usuario) {
-            this.descripcionusuario = descripcion_usuario;
-        }
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setEstrellas(int estrellas) {
+        this.estrellas = estrellas;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    public void setPwd(String pwd) {
+        this.pwd = pwd;
+    }
+
+    public void setIdubicacion(Long idubicacion) {
+        this.idubicacion = idubicacion;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
+
+    public void setSubcategoria(String subcategoria) {
+        this.subcategoria = subcategoria;
+    }
+
+    public Long getIdusuarios() {
+        return idusuarios;
+    }
+
+    public int getTipo() {
+        return tipo;
+    }
+
+    public String getDescripcionusuario() {
+        return descripcionusuario;
+    }
+
+    public String getImgperfil() {
+        return imgperfil;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public int getEstrellas() {
+        return estrellas;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public String getPwd() {
+        return pwd;
+    }
+
+    public Long getIdubicacion() {
+        return idubicacion;
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public String getSubcategoria() {
+        return subcategoria;
+    }
 
     @Override
     public String toString() {
@@ -84,63 +166,5 @@ import javax.persistence.*;
                 '}';
     }
 
-    public void setNombre(String nombre) {
-            this.nombre = nombre;
-        }
 
-        public void setEstrellas(int estrellas) {
-            this.estrellas = estrellas;
-        }
-
-        public void setEmail(String email) {
-            this.email = email;
-        }
-
-        public void setTelefono(String telefono) {
-            this.telefono = telefono;
-        }
-
-        public void setContrasena(String contrasena) {
-            this.pwd = contrasena;
-        }
-
-        public void setId_ubicacion(Long id_ubicacion) {
-            this.idubicacion = id_ubicacion;
-        }
-
-        public Long getId_usuarios() {
-            return idusuarios;
-        }
-
-        public int getTipo() {
-            return tipo;
-        }
-
-        public String getDescripcion_usuario() {
-            return descripcionusuario;
-        }
-
-        public String getNombre() {
-            return nombre;
-        }
-
-        public int getEstrellas() {
-            return estrellas;
-        }
-
-        public String getEmail() {
-            return email;
-        }
-
-        public String getTelefono() {
-            return telefono;
-        }
-
-        public String getContrasena() {
-            return pwd;
-        }
-
-        public Long getId_ubicacion() {
-            return idubicacion;
-        }
 }// class Employee
