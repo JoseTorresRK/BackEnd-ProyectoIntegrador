@@ -29,6 +29,9 @@ public class UsuariosService {
         if(!usuario.isPresent()){
             throw new IllegalStateException("User does not exist " +nombre);
         }
+	if(!contrasena.equals(usuario.get().getContrasena())){
+		throw new IllegalStateException("Contraseña incorrecta" +contrasena);
+	}
         return usuario;
     }
 

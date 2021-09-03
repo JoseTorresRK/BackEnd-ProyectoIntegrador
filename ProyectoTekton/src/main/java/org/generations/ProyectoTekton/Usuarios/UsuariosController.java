@@ -26,7 +26,7 @@ public class UsuariosController {
     public Usuarios getUser(@PathVariable("idusuarios") Long userId) {
         return userService.getUser(userId);
     }//getUser
-    @GetMapping(path = "/login")
+    @GetMapping(path = "/login/")
     public Optional<Usuarios> getUser(@RequestParam String usuario, @RequestParam String contrasena){
         return userService.getUser(usuario,contrasena);
     }
