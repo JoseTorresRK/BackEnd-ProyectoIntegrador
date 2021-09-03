@@ -9,8 +9,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping(path = "api/users/")
-@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST})
-
+@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
 public class UsuariosController {
 
     private final UsuariosService userService;
