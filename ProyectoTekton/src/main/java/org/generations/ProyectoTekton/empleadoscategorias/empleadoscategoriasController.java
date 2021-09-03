@@ -9,4 +9,7 @@ public class empleadoscategoriasController {
     private final empleadoscategoriasService empleadoscategoriasService;
 
 
+    public empleadoscategoriasController() {
+        empleadoscategoriasService = null;
+    }
 }

@@ -38,7 +38,6 @@ public class empleadoscategorias {
         this.id_relacion = id_relacion;
     }//set idrelacion
 
-    @Override
 
     @Override
     public String toString() {
