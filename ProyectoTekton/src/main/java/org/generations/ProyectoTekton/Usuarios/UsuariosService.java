@@ -29,7 +29,7 @@ public class UsuariosService {
         if(!usuario.isPresent()){
             throw new IllegalStateException("User does not exist " +nombre);
         }
-	if(!contrasena.equals(usuario.get().getContrasena())){
+	if(!contrasena.equals(usuario.get().getPwd())){
 		throw new IllegalStateException("Contraseña incorrecta" +contrasena);
 	}
         return usuario;
@@ -45,8 +45,8 @@ public class UsuariosService {
 
     public void addUser(Usuarios usr){
 
-        Optional<Usuarios> userByName = userRepository.findUserByName(usr.getNombre());
-        if (userByName.isPresent()) {
+        Optional<Usuarios> userByName = userRepository.findUserByName(usr.getEmail());
+        if (userByName.isPresent() && userByName.get().getTipo()==usr.getTipo()) {
             throw new IllegalStateException("username exist !!!");
         } //if
 
@@ -57,8 +57,8 @@ public class UsuariosService {
             throw new IllegalStateException("User does not exist " + userId);
         }
         Usuarios use=userRepository.getById(userId);
-        if(!use.getImg_perfil().equals(Imagen)){
-            use.setImg_perfil(Imagen);
+        if(!use.getImgperfil().equals(Imagen)){
+            use.setImgperfil(Imagen);
         }
         userRepository.save(use);
     }
@@ -69,9 +69,9 @@ public class UsuariosService {
         Usuarios use= userRepository.getById(userId);
         if(Desc.length()<=500){
 
-            use.setDescripcion_usuario(Desc);
+            use.setDescripcionusuario(Desc);
         }else{
-            use.setDescripcion_usuario(Desc.substring(0,500));
+            use.setDescripcionusuario(Desc.substring(0,500));
         }
         userRepository.save(use);
 
