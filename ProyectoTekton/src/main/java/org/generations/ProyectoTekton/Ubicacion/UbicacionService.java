@@ -80,6 +80,7 @@ public class UbicacionService {
             if(newUbicacion.getLongitud() != temporalUbicacion.getLongitud()){
                 temporalUbicacion.setLongitud(newUbicacion.getLongitud());
             }
+            ubicacionRepository.save(temporalUbicacion);
         }
     }
 }
