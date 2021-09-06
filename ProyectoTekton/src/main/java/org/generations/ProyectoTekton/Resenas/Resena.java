@@ -24,6 +24,7 @@ public class Resena {
         this.estrellas = estrellas;
     }// contructor
 
+
     public Resena(){} // default constructor
 
     public Long getId_resena() {

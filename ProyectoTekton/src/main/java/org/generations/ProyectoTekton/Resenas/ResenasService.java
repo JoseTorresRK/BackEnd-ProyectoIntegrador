@@ -10,7 +10,8 @@ import java.util.Optional;
 @Service
 public class ResenasService {
     public final ArrayList<Resena> lista = new ArrayList<>();
-    
+
+
     private final ResenaRepository resenaRepository;
     
     @Autowired
@@ -58,7 +59,8 @@ public class ResenasService {
         resenaRepository.save(Resena);
     } //addResena
     
-    
+
+
     public void updateResena(Long idResena, Resena newresena) {
         if (! resenaRepository.existsById(idResena)) {
             throw new IllegalStateException("Ubicacion does not exist " + idResena);
