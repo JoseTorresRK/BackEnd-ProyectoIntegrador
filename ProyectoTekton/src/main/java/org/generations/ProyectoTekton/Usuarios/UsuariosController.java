@@ -10,6 +10,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping(path = "api/users/")
 @CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
+
 public class UsuariosController {
 
     private final UsuariosService userService;
@@ -47,6 +48,17 @@ public class UsuariosController {
     public void UpdateContacto(@PathVariable("idusuarios") Long userId,@RequestParam String email,@RequestParam String telefono){
         userService.uptadeContacto(userId,email,telefono);
     }
-
+    @PutMapping(path="/categoria/{idusuarios}")
+    public void UpdateCategoria(@PathVariable("idusuarios") Long userId,@RequestParam String categoria){
+        userService.updateCategoria(userId,categoria);
+    }
+    @PutMapping(path = "/subcategoria/{idusuarios}")
+    public void UpdateSubcategoria(@PathVariable("idusuarios") Long userId,@RequestParam String subcategoria){
+        userService.updateSubcategoria(userId,subcategoria);
+    }
+    @DeleteMapping(path = "{idusuarios}")
+    public void DeleteUser(@PathVariable("idusuarios") Long userId){
+        userService.deleteUser(userId);
+    }
 
 }
