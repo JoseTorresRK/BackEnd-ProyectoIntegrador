@@ -45,7 +45,7 @@ public class UsuariosService {
 
     public void addUser(Usuarios usr){
 
-        Optional<Usuarios> userByName = userRepository.findUserByName(usr.getNombre());
+        Optional<Usuarios> userByName = userRepository.findUserByName(usr.getEmail());
         if (userByName.isPresent() && userByName.get().getTipo()==usr.getTipo()) {
             throw new IllegalStateException("username exist !!!");
         } //if
