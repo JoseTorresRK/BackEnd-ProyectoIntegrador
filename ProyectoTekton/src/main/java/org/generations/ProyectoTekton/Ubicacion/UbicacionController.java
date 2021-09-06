@@ -8,6 +8,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path="api/ubicacion")
+@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST,RequestMethod.DELETE,RequestMethod.PUT})
+
 public class UbicacionController {
     private final UbicacionService ubicacionService;
 
@@ -16,13 +18,17 @@ public class UbicacionController {
 
         this.ubicacionService = ubicacionService;
     }
-
+    @GetMapping("/ultima")
+    public Ubicacion getUltima(){
+        return ubicacionService.getUltimaUbicacion();
+    }
     @GetMapping
     public List<Ubicacion> getUbicacion(){return ubicacionService.getUbicacion();}
 
     @PostMapping
-    public void addUbicacion (@RequestBody Ubicacion objUbicacion){
+    public Ubicacion addUbicacion (@RequestBody Ubicacion objUbicacion){
         ubicacionService.addUbicacion(objUbicacion);
+        return objUbicacion;
     }//addUbicacion
 
     @GetMapping(path="{idubicacion}")

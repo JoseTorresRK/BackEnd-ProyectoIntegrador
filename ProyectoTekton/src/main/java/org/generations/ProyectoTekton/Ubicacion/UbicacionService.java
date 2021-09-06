@@ -28,9 +28,12 @@ public class UbicacionService {
             throw new IllegalStateException("Ubicacion ya existente");
         }else{
             ubicacionRepository.save(objUbicacion);
+            
         }
     }
-
+    public Ubicacion getUltimaUbicacion(){
+        return ubicacionRepository.findAll().get(ubicacionRepository.findAll().size()-1);
+    }
     public Ubicacion getUbicacionbyId(Long idubicacion){
 
             return ubicacionRepository.findById(idubicacion).orElseThrow(
