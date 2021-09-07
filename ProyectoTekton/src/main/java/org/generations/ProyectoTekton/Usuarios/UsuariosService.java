@@ -29,12 +29,33 @@ public class UsuariosService {
         if(!usuario.isPresent()){
             throw new IllegalStateException("User does not exist " +nombre);
         }
-	if(!contrasena.equals(usuario.get().getPwd())){
-		throw new IllegalStateException("Contraseña incorrecta" +contrasena);
-	}
+        if(!usuario.get().getPwd().equals(contrasena)){
+            throw new IllegalStateException("La contraseña no existe " +contrasena);
+        }
         return usuario;
     }
+    public void updateCategoria(Long userId,String categoria){
+        if(!userRepository.existsById(userId)){
+            throw new IllegalStateException("User does not exist " + userId);
+        }
+        Usuarios users=userRepository.getById(userId);
+        if(users.getCategoria()!=categoria){
+            users.setCategoria(categoria);
+            userRepository.save(users);
+        }
 
+    }
+    public void updateSubcategoria(Long userId,String subcategoria){
+        if(!userRepository.existsById(userId)){
+            throw new IllegalStateException("User does not exist " + userId);
+        }
+        Usuarios users=userRepository.getById(userId);
+        if(users.getSubcategoria()!=subcategoria){
+            users.setSubcategoria(subcategoria);
+            userRepository.save(users);
+        }
+
+    }
     public void deleteUser(Long userId) {
         if (userRepository.existsById(userId)) {
             userRepository.deleteById(userId);
@@ -46,7 +67,7 @@ public class UsuariosService {
     public void addUser(Usuarios usr){
 
         Optional<Usuarios> userByName = userRepository.findUserByName(usr.getEmail());
-        if (userByName.isPresent() && userByName.get().getTipo()==usr.getTipo()) {
+        if (userByName.isPresent()) {
             throw new IllegalStateException("username exist !!!");
         } //if
 
@@ -82,14 +103,19 @@ public class UsuariosService {
             throw new IllegalStateException("User does not exist " + userId);
         }
         Usuarios use=userRepository.getById(userId);
-        if(!use.getEmail().equals(contacto)){
-            Optional<Usuarios> usuario=userRepository.findUserByName(contacto);
-            if(usuario.isPresent()){
+
+        Optional<Usuarios> usuario=userRepository.findUserByName(contacto);
+        if(usuario.isPresent()){
+            if(usuario.get().getIdusuarios()==use.getIdusuarios()){
+                use.setTelefono(tel);
+            }
+            else {
                 throw new IllegalStateException("username exist !!!");
             }
-            use.setEmail(contacto);
-            use.setTelefono(tel);
+
         }
+        use.setEmail(contacto);
+        use.setTelefono(tel);
         userRepository.save(use);
     }
 
