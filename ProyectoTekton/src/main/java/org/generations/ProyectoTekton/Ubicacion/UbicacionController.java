@@ -26,11 +26,14 @@ public class UbicacionController {
     public List<Ubicacion> getUbicacion(){return ubicacionService.getUbicacion();}
 
     @PostMapping
-    public Ubicacion addUbicacion (@RequestBody Ubicacion objUbicacion){
+    public void addUbicacion (@RequestBody Ubicacion objUbicacion){
         ubicacionService.addUbicacion(objUbicacion);
-        return objUbicacion;
-    }//addUbicacion
 
+    }//addUbicacion
+    @PostMapping(path = "/actualizar/{idubicacion}")
+    public void updateubicacion(@PathVariable("idubicacion") Long idubicacion,@RequestBody Ubicacion ubicacion){
+        ubicacionService.updateUbicacion(idubicacion,ubicacion);
+    }
     @GetMapping(path="{idubicacion}")
     public Ubicacion getUbicacion( @PathVariable("idubicacion") Long idubicacion){
         return ubicacionService.getUbicacionbyId(idubicacion);
